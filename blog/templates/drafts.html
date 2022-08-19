@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<table class="table">
+   <thead>
+     <tr>
+       <th scope="col">Data</th>
+       <th scope="col">Tytuł</th>
+       <th scope="col">Treść</th>
+       <th scope="col"></th>
+     </tr>
+   </thead>
+   <tbody>
+       {% for post in drafts %}
+     <tr>
+       <td>
+           {{ post.pub_date.strftime('%Y-%m-%d') }}
+       </td>
+       <td>
+           <a href="{{ url_for('call_function_edit_entry', entry_id=post.id) }}">
+               {{ post.title }}
+           </a>
+       </td>
+       <td>{{ post.body|truncate(100, true) }}</td>
+       <td>
+         <form class="form-inline my-2 my-lg-0" action="{{ url_for('delete_entry', entry_id=post.id, direction=2) }}" method="POST">
+          <button class="btn btn-danger" type="submit">Usuń</button>
+         </form>
+       </td>
+     </tr>
+     {% endfor %}
+   </tbody>
+ </table>
+
+{% endblock %}

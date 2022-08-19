@@ -28,13 +28,43 @@
      <span class="navbar-toggler-icon"></span>
    </button>
 
-   <!-- -->
+   <!-- Navigation Button 2 -START -->
+
    <a class="navbar-brand" href="/new-post/">Dodaj nowy wpis</a>
    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
    aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
    <span class="navbar-toggler-icon"></span>
    </button>
+
+   <!-- Navigation Button 2 -END -->
+
+   <!-- Navigation Button 2.1 Szkice wpisu -START -->
+
+   <a class="navbar-brand" href="/drafts/">Posty nieopublikowne</a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+   aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+   <span class="navbar-toggler-icon"></span>
+   </button>
+
+   <!-- Navigation Button 2.1 -END -->   
    
+   <!-- Navigation Button 3 -START -->
+
+   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+    {% if session.logged_in %}
+      <form class="form-inline my-2 my-lg-0" action="{{ url_for('logout') }}" method="POST">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Wyloguj</button>
+      </form>
+    {% else %}
+      <a href="{{ url_for('login') }}" class="btn btn-secondary my-2 my-lg-0">Zaloguj</a>
+    {% endif %}
+  </div>
+
+  <!-- Navigation Button 3 - END -->
+
+  <!-- Navigation Button 4  wyszukiwarka -START 
 
    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
      <ul class="navbar-nav mr-auto">
@@ -44,7 +74,11 @@
        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Szukaj</button>
      </form>
    </div>
+    wyszukiwarka -END -->
+    
  </nav>
+
+
 
  <main role="main" class="container">
 
